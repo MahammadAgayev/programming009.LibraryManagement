@@ -13,5 +13,10 @@ namespace programming009.LibraryManagement
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+
+        }
+
     }
 }
