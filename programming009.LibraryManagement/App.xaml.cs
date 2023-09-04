@@ -18,5 +18,9 @@ namespace programming009.LibraryManagement
 
         }
 
+        public void Test()
+        {
+            //this is for test
+        }
     }
 }
