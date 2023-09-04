@@ -17,5 +17,29 @@ namespace programming009.LibraryManagement
         {
 
         }
+
+        //DB first design
+        /*
+         *  UML diagram 
+         * 
+         *  Books      Authors   Branches
+         *   Id           Id       Id
+         *  Name         Name      Name
+         *  Price       Surname   Address
+         *  Genre       
+         *  
+         *      AuthorBooks
+         *         Id
+         *       AuthorId
+         *       BookId
+         */
+
+        //Layered Architecture
+        /*
+         *  [  Presentation ] 
+         *   [  Business  ] MVVM,  ViewModel
+         *     [  Core  ] Repository, UnitOfWork
+         *       [ DB ]  
+         */
     }
 }
