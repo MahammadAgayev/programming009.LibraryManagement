@@ -15,6 +15,6 @@ namespace programming009.LibraryManagement.Core.Domain.Repositories
         void Delete(int id);
 
         Author Get(int id);
-        IReadOnlyList<Author> Get();
+        List<Author> Get();
     }
 }

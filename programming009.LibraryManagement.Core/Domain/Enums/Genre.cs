@@ -10,5 +10,7 @@
         Detective,
         Fantastic,
         Philosophy,
+        Psychology,
+        Programming
     }
 }
