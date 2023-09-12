@@ -15,7 +15,6 @@ namespace programming009.LibraryManagement
     {
         public App()
         {
-            ApplicationContext.Initialize();
         }
 
         //DB first design

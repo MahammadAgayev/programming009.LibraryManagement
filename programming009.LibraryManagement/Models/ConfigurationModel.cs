@@ -1,8 +1,8 @@
 ﻿using programming009.LibraryManagement.Core.Domain.Enums;
 
-namespace programming009.LibraryManagement.Settings
+namespace programming009.LibraryManagement.Models
 {
-    public class AppSettings
+    public class ConfigurationModel
     {
         public string DbHost { get; set; }
         public int DbPort { get; set; }
@@ -10,6 +10,5 @@ namespace programming009.LibraryManagement.Settings
         public string DbName { get; set; }
         public bool WindowsAuthentication { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
     }
 }

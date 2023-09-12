@@ -1,4 +1,6 @@
-﻿using System;
+﻿using programming009.LibraryManagement.ViewModels;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,16 +29,32 @@ namespace programming009.LibraryManagement.Views
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
+            ApplicationContext.Initialize();
             CheckServer();
         }
 
         //async
         public async void CheckServer()
         {
-            //Thread.Sleep(10_000);
-            await Task.Delay(10_000);
+            await Task.Delay(5_000);
 
             //ApplicationContext.UnitOfWork.IsServerOnline()
+
+            if (ApplicationContext.DB.IsOnline())
+            {
+                LoginWindow window = new LoginWindow();
+                //window.DataContext = 
+
+                window.Show();
+                this.Close();
+                return;
+            }
+
+            ConfigurationWindow configurationWindow = new ConfigurationWindow();
+            configurationWindow.DataContext = new ConfigurationViewModel(configurationWindow);
+
+            configurationWindow.Show();
+            this.Close();
         }
     }
 }
