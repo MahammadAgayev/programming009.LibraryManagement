@@ -18,6 +18,8 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer
 
         public IBranchRepository BranchRepository => throw new NotImplementedException();
 
+        public IUserRepository UserRepository => throw new NotImplementedException();
+
         public bool IsOnline()
         {
             return false;

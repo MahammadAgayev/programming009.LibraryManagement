@@ -1,11 +1,11 @@
-﻿<Window x:Class="programming009.LibraryManagement.Views.LoginWindow"
+﻿<Window x:Class="programming009.LibraryManagement.Views.RegisterWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:programming009.LibraryManagement.Views"
         mc:Ignorable="d"
-        Title="Login Window" Height="480" Width="500" Background="Transparent" FocusManager.FocusedElement="{Binding ElementName=txtUsername}"
+        Title="Register Window" Height="480" Width="500" Background="Transparent" FocusManager.FocusedElement="{Binding ElementName=txtUsername}"
         AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Border CornerRadius="12" BorderThickness="20" BorderBrush="#FF24253A" Margin="25">
         <Border.Effect>
@@ -20,46 +20,44 @@
                 </Label>
 
                 <TextBlock Text="Username" Background="#FF24253A"  FontFamily="Times New Roman" FontSize="24" Foreground="#FF747474" Margin="10,0,0,0"/>
-                <TextBox x:Name="txtUsername" Margin="10,0,0,0" BorderThickness="0"  Text="{Binding LoginModel.Username}" Focusable="True"
+                <TextBox x:Name="txtUsername" Margin="10,0,0,0" BorderThickness="0"  Text="{Binding RegisterModel.Username}" Focusable="True"
                          Foreground="White" Background="#FF24253A" Style="{x:Null}" FontFamily="Century Gothic" FontSize="24">
                     <TextBox.InputBindings>
-                        <KeyBinding Command="{Binding Path=Login}" CommandParameter="{Binding ElementName=txtPassword}"/>
+                        <KeyBinding Command="{Binding Path=Register}" CommandParameter="{Binding ElementName=txtPassword}"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+
+                <Separator BorderBrush="#60444444" Margin="10"/>
+
+
+                <TextBlock Text="Email" Background="#FF24253A"  FontFamily="Times New Roman" FontSize="24" Foreground="#FF747474" Margin="10,0,0,0"/>
+                <TextBox Margin="10,0,0,0" BorderThickness="0"  Text="{Binding RegisterModel.Email}" Focusable="True"
+                         Foreground="White" Background="#FF24253A" Style="{x:Null}" FontFamily="Century Gothic" FontSize="24">
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="{Binding Path=Register}" CommandParameter="{Binding ElementName=txtPassword}"/>
                     </TextBox.InputBindings>
                 </TextBox>
 
                 <Separator BorderBrush="#60444444" Margin="10"/>
 
                 <TextBlock Text="Password" Background="#FF24253A"  FontFamily="Times New Roman" FontSize="24" Foreground="#FF747474" Margin="10,0,0,0"/>
-
                 <PasswordBox Margin="10,0,0,0" x:Name="txtPassword"
                              Background="#FF24253A" BorderThickness="0" BorderBrush="#FF8A2525" 
                              Foreground="White" FontFamily="Century Gothic" FontSize="24">
                     <PasswordBox.InputBindings>
-                        <KeyBinding Command="{Binding Login}" CommandParameter="{Binding ElementName=txtPassword}" Key="Enter" Gesture="Enter"/>
+                        <KeyBinding Command="{Binding Register}" CommandParameter="{Binding ElementName=txtPassword}" Key="Enter" Gesture="Enter"/>
                     </PasswordBox.InputBindings>
                 </PasswordBox>
-                <Separator BorderBrush="#60444444" Margin="10"/>
-
-                <TextBlock Text="Username or password is incorrect" Background="#FF24253A" FontFamily="Times New Roman" FontSize="24" 
-                           Foreground="Red" Margin="10,0,0,10"  Visibility="{Binding ErrorVisibility}"/>
-
-                <TextBlock Text="Register" Background="#FF24253A" FontFamily="Times New Roman" FontSize="24" 
-                           Foreground="Blue" Margin="10,0,0,10"  >
-                    <!--<Hyperlink Command="{Binding OpenRegister}"></Hyperlink>-->
-                    <TextBlock.InputBindings>
-                        <MouseBinding MouseAction="LeftClick" Command="{Binding OpenRegister}"></MouseBinding>
-                    </TextBlock.InputBindings>
-                </TextBlock>
+                <Separator BorderBrush="#60444444" Margin="5"/>
 
                 <Border VerticalAlignment="Stretch" BorderThickness="5" CornerRadius="10" BorderBrush="#FF333337" Height="auto" Width="150">
-                    <Button x:Name="login" FontSize="22" BorderThickness="0" Command="{Binding Login}" CommandParameter="{Binding ElementName=txtPassword}" 
-                                        Background="#FF333337" Foreground="#FFC2C2C2" FontFamily="Century Gothic" FontWeight="Bold" Content="Login" Style="{StaticResource BaseButton}" >
+                    <Button x:Name="login" FontSize="22" BorderThickness="0" Command="{Binding Register}" CommandParameter="{Binding ElementName=txtPassword}" 
+                                        Background="#FF333337" Foreground="#FFC2C2C2" FontFamily="Century Gothic" FontWeight="Bold" Content="Register" Style="{StaticResource BaseButton}" >
                         <Button.InputBindings>
                             <KeyBinding Key="Esc"/>
                         </Button.InputBindings>
                     </Button>
                 </Border>
-                
             </StackPanel>
         </Grid>
     </Border>

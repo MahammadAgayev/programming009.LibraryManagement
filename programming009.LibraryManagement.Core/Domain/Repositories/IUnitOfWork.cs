@@ -6,6 +6,7 @@
         public IAuthorRepository AuthorRepository { get; }
         public IBookRepository BookRepository { get; }
         public IBranchRepository BranchRepository { get; }
+        public IUserRepository UserRepository { get; }
 
         bool IsOnline();
     }

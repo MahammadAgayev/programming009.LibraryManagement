@@ -62,5 +62,15 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer
                 }
             };
         }
+
+        public static User MapUser(IDataReader reader)
+        {
+            return new User
+            {
+                Username = (string)reader["username"],
+                Email = (string)reader["email"],
+                PasswordHash = (string)reader["passwordhash"]
+            };
+        }
     }
 }

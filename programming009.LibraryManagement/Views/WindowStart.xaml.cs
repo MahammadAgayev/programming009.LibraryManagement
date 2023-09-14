@@ -43,7 +43,7 @@ namespace programming009.LibraryManagement.Views
             if (ApplicationContext.DB.IsOnline())
             {
                 LoginWindow window = new LoginWindow();
-                //window.DataContext = 
+                window.DataContext = new LoginWindowViewModel(window);
 
                 window.Show();
                 this.Close();
