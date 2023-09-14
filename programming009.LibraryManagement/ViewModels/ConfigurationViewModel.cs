@@ -37,6 +37,7 @@ namespace programming009.LibraryManagement.ViewModels
         public List<DatabaseType> SupportedDbTypes { get; set; }
 
         public ICommand Cancel { get; set; }
+
         public ICommand Save { get; set; }
     }
 }
