@@ -1,4 +1,5 @@
-﻿using programming009.LibraryManagement.Core.Domain.Enums;
+﻿using programming009.LibraryManagement.Core.Domain.Entities;
+using programming009.LibraryManagement.Core.Domain.Enums;
 using programming009.LibraryManagement.Core.Domain.Repositories;
 using programming009.LibraryManagement.Factories;
 using programming009.LibraryManagement.Settings;
@@ -39,6 +40,7 @@ namespace programming009.LibraryManagement
 
         public static AppSettings Settings { get; private set; }
         public static IUnitOfWork DB { get; private set; }
+        public static User CurrentUser { get; set; }
 
         public static void Initialize()
         {

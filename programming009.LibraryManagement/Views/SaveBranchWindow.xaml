@@ -1,0 +1,39 @@
+﻿<Window x:Class="programming009.LibraryManagement.Views.SaveBranchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:programming009.LibraryManagement.Views"
+        mc:Ignorable="d"
+        Title="Save Branch Window" Height="300" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <StackPanel >
+                <Label Content="Name:" Margin="10,10,0,0"></Label>
+                <TextBox Margin="10" Text="{Binding BranchModel.Name}"></TextBox>
+
+                <Label Content="Address:" Margin="10,0,0,0"></Label>
+                <TextBox Margin="10" Text="{Binding BranchModel.Address}"></TextBox>
+
+                <Border Margin="10" >
+                    <Button Content="Save" Command="{Binding SaveBranch}" Style="{StaticResource btnAdd}">
+                    </Button>
+                </Border>
+            </StackPanel>
+
+        </ScrollViewer>
+    </Grid>
+</Window>

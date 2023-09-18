@@ -45,9 +45,19 @@ namespace programming009.LibraryManagement.Commands.LoginCommands
                 this.Fail(username);
                 return;
             }
+
+            ApplicationContext.CurrentUser = user;
+
+            AdminWindow window = new AdminWindow();
+
+            AdminWindowViewModel viewModel = new AdminWindowViewModel(window);
+            viewModel.CenterGrid = window.grdCenter;
             
-            MessageBox.Show("logged in"); 
+            window.DataContext = viewModel;
+            window.Show();
+            _loginWindowViewModel.Window.Close();
         }
+      
 
         private void Fail(string username)
         {

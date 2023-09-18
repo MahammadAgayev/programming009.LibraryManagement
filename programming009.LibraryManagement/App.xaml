@@ -102,7 +102,7 @@
             <Setter Property="Margin" Value="0"/>
             <Setter Property="AlternationCount" Value="2"/>
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
 
         <Style TargetType="{x:Type Grid}" x:Key="grdSearch">

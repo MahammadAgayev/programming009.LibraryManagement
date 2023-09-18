@@ -1,0 +1,52 @@
+﻿<Window x:Class="programming009.LibraryManagement.ViewModels.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:programming009.LibraryManagement.ViewModels"
+        mc:Ignorable="d"
+        Title="Admin Panel" Height="788.8" Width="900" 
+         Background="LightGray" WindowState="Maximized" 
+        WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize">
+    <Border CornerRadius="15" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel  Grid.Row="0" Height="120">
+                <TextBlock Text="Library Manager" FontSize="60" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontFamily="Times new roman" Margin="10 15 10 10"/>
+                <ProgressBar  x:Name="progressBar" Background="Green" Foreground="DarkGoldenrod"  IsIndeterminate="True"  Height="10" Margin="10 15 10 0"/>
+                <Line Stretch="Fill" Stroke="Black" X2="1" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <DockPanel Grid.Row="1" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.1*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid VerticalAlignment="Top" Grid.Column="0">
+                        <Line Stretch="Fill" Stroke="Black" X2="1" VerticalAlignment="Top"/>
+                        <ScrollViewer  Opacity="20" CanContentScroll="True" Height="800" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Width="250" Height="700" HorizontalAlignment="Center">
+                                <Button Width="200" Height="60" Style="{StaticResource baseButton}" Command="{Binding OpenBranches}" Content="Branches" Foreground="Black" FontSize="20"  Name="btnSettings" Margin="0 10 0 10">
+                                    <Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
+                                </Button>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+                <Border Grid.Row="1" >
+                    <Grid  Background="#f2f2f2" Name="grdCenter" >
+                        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Images/parking.jpg" Height="562" Margin="84,37,84,58.6"  />
+                    </Grid>
+                </Border>                
+            </DockPanel>
+        </Grid>
+    </Border>
+</Window>
