@@ -6,11 +6,11 @@ using System.Windows.Input;
 
 namespace programming009.LibraryManagement.Commands.AdminWindowCommands
 {
-    public class OpenBranchesCommand : ICommand
+    public class OpenAuthorsCommand : ICommand
     {
         private readonly AdminWindowViewModel _viewModel;
 
-        public OpenBranchesCommand(AdminWindowViewModel viewModel)
+        public OpenAuthorsCommand(AdminWindowViewModel viewModel)
         {
             _viewModel = viewModel;
         }
@@ -24,12 +24,12 @@ namespace programming009.LibraryManagement.Commands.AdminWindowCommands
 
         public void Execute(object? parameter)
         {
-            BranchesControl control = new BranchesControl();
+            AuthorsControl control = new AuthorsControl();
 
-            BranchesViewModel branchesViewModel = new BranchesViewModel();
-            branchesViewModel.Load();
+            AuthorsViewModel authosViewModel = new AuthorsViewModel();
+            authosViewModel.Load();
 
-            control.DataContext = branchesViewModel;
+            control.DataContext = authosViewModel;
 
             _viewModel.CenterGrid.Children.Clear();
             _viewModel.CenterGrid.Children.Add(control);

@@ -32,7 +32,12 @@
                         <Line Stretch="Fill" Stroke="Black" X2="1" VerticalAlignment="Top"/>
                         <ScrollViewer  Opacity="20" CanContentScroll="True" Height="800" HorizontalScrollBarVisibility="Auto">
                             <StackPanel Width="250" Height="700" HorizontalAlignment="Center">
-                                <Button Width="200" Height="60" Style="{StaticResource baseButton}" Command="{Binding OpenBranches}" Content="Branches" Foreground="Black" FontSize="20"  Name="btnSettings" Margin="0 10 0 10">
+                                <Button Width="200" Height="60" Style="{StaticResource baseButton}" Command="{Binding OpenBranches}" Content="Branches" Foreground="Black" FontSize="20" Margin="0 10 0 10">
+                                    <Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
+                                </Button>
+                                <Button Width="200" Height="60" Style="{StaticResource baseButton}" Command="{Binding OpenAuthors}" Content="Authors" Foreground="Black" FontSize="20"  Margin="0 10 0 10">
                                     <Button.BitmapEffect>
                                         <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
                                     </Button.BitmapEffect>

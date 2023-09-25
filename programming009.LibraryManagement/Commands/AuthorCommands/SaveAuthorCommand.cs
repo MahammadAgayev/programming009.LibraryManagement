@@ -5,13 +5,13 @@ using programming009.LibraryManagement.ViewModels;
 using System;
 using System.Windows.Input;
 
-namespace programming009.LibraryManagement.Commands.BranchesCommands
+namespace programming009.LibraryManagement.Commands.AuthorCommands
 {
-    public class SaveBranchCommand : ICommand
+    public class SaveAuthorCommand : ICommand
     {
-        private readonly SaveBranchWindowViewModel _viewModel;
+        private readonly SaveAuthorWindowViewModel _viewModel;
 
-        public SaveBranchCommand(SaveBranchWindowViewModel viewModel)
+        public SaveAuthorCommand(SaveAuthorWindowViewModel viewModel)
         {
             _viewModel = viewModel;
         }
@@ -25,25 +25,25 @@ namespace programming009.LibraryManagement.Commands.BranchesCommands
 
         public void Execute(object? parameter)
         {
-            BranchModel model = _viewModel.BranchModel;
+            AuthorModel model = _viewModel.AuthorModel;
 
-            Branch branch = new Branch
+            Author author = new Author
             {
                 Id = model.Id,
                 Name = model.Name,
-                Address = model.Address
+                Surname = model.Surname
             };
 
-            if (branch.Id > 0)
+            if (author.Id > 0)
             {
-                ApplicationContext.DB.BranchRepository.Update(branch);
+                ApplicationContext.DB.AuthorRepository.Update(author);
             }
             else
             {
-                ApplicationContext.DB.BranchRepository.Add(branch);
+                ApplicationContext.DB.AuthorRepository.Add(author);
+                model.Id = author.Id;
 
-                model.Id = branch.Id;
-                _viewModel.Parent.BranchModels.Add(model);
+                _viewModel.Parent.AuthorModels.Add(model);
             }
 
             _viewModel.Window.Close();

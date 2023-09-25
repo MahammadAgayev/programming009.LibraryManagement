@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="programming009.LibraryManagement.Views.BranchesControl"
+﻿<UserControl x:Class="programming009.LibraryManagement.Views.AuthorsControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,24 +14,25 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <WrapPanel  Height="60" HorizontalAlignment="Right">
-                <Button Content="Add" Command="{Binding OpenAddBranch}" FontSize="25" Height="60" Width="180" Style="{StaticResource btnGreen}" Margin="15 0 15 0" VerticalAlignment="Center"/>
-                <Button Content="Update" Command="{Binding OpenUpdateBranch}" FontSize="25" Height="60" Width="180" Style="{StaticResource btnGreen}" Margin="15 0 15 0" VerticalAlignment="Center"/>
-                <Button Content="Delete" Command="{Binding OpenDeleteBranch}" FontSize="25" Height="60" Width="180" Style="{StaticResource btnGreen}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <Button Content="Add" Command="{Binding OpenAddAuthor}" FontSize="25" Height="60" Width="180" Style="{StaticResource btnGreen}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <Button Content="Update" Command="{Binding OpenUpdateAuthor}" FontSize="25" Height="60" Width="180" Style="{StaticResource btnGreen}" Margin="15 0 15 0" VerticalAlignment="Center"/>
+                <Button Content="Delete" Command="{Binding OpenDeleteAuthor}" FontSize="25" Height="60" Width="180" Style="{StaticResource btnGreen}" Margin="15 0 15 0" VerticalAlignment="Center"/>
             </WrapPanel>
             <Line Stretch="Fill" Stroke="Black" X2="1" VerticalAlignment="Bottom" Margin="0 20 0 0"/>
         </StackPanel>
 
         <ScrollViewer Grid.Row="2" Visibility="Visible">
-            <ListView x:Name="MainList" ItemsSource="{Binding BranchModels}"
-                        Style="{StaticResource listViewCustom}" SelectedIndex="{Binding SelectedBranchIndex}">
+            <ListView x:Name="MainList" ItemsSource="{Binding AuthorModels}"
+                        Style="{StaticResource listViewCustom}" SelectedIndex="{Binding SelectedAuthorIndex}">
                 <ListView.View>
                     <GridView >
                         <GridViewColumn  DisplayMemberBinding="{Binding Id}"  Header="Id" Width="auto"/>
                         <GridViewColumn  DisplayMemberBinding="{Binding Name}" Header="Name" Width="auto"/>
-                        <GridViewColumn  DisplayMemberBinding="{Binding Address}" Header="Address" Width="auto"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding Surname}" Header="Surname" Width="auto"/>
                     </GridView>
                 </ListView.View>
             </ListView>
         </ScrollViewer>
     </Grid>
 </UserControl>
+

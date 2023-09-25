@@ -15,9 +15,11 @@ namespace programming009.LibraryManagement.ViewModels
         public AdminWindowViewModel(AdminWindow window) : base(window)
         {
             OpenBranches = new OpenBranchesCommand(this);
+            OpenAuthors = new OpenAuthorsCommand(this);
         }
 
         public ICommand OpenBranches { get; set; }
+        public ICommand OpenAuthors { get; set; }
         public Grid CenterGrid { get; set; }
     }
 }

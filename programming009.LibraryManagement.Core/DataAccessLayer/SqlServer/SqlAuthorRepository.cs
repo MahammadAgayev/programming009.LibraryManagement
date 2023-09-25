@@ -25,14 +25,14 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "insert into authors values(name, surname)";
+            const string query = "insert into authors output inserted.id values(@name, @surname)";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("name", author.Name);
             cmd.Parameters.AddWithValue("surname", author.Surname);
 
-            cmd.ExecuteNonQuery();
+            author.Id = (int)cmd.ExecuteScalar();
         }
 
         public void Delete(int id)

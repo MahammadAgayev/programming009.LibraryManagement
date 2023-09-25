@@ -19,19 +19,20 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "Insert into Branches values(@name, @address)";
+            const string query = "Insert into Branches output inserted.id values(@name, @address)";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("name", branch.Name);
             cmd.Parameters.AddWithValue("address", branch.Address);
 
-            cmd.ExecuteNonQuery();
+            branch.Id = (int)cmd.ExecuteScalar();
         }
 
         public void Delete(int id)
         {
             using SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
 
             const string query = "delete from branches where id = @id";
 
