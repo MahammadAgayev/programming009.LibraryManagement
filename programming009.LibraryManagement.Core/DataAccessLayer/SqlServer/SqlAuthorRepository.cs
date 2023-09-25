@@ -54,7 +54,7 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "update authors set name = @name, surname  = @surname";
+            const string query = "update authors set name = @name, surname  = @surname where id = @id";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 

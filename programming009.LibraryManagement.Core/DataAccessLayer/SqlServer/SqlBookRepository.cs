@@ -20,14 +20,14 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "insert into books values(@name, @price, @genre)";
+            const string query = "insert into books output inserted.id values(@name, @price, @genre)";
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("name", book.Name);
             cmd.Parameters.AddWithValue("price", book.Price);
             cmd.Parameters.AddWithValue("genre", book.Genre);
 
-            cmd.ExecuteNonQuery();
+            book.Id = (int)cmd.ExecuteScalar();
         }
 
         public void Delete(Book book)
@@ -86,7 +86,8 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
 
             List<Book> books = new List<Book>();
 
-            while (reader.Read()) {
+            while (reader.Read())
+            {
                 Book b = Mapper.MapBook(reader);
                 books.Add(b);
             }

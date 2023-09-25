@@ -16,10 +16,12 @@ namespace programming009.LibraryManagement.ViewModels
         {
             OpenBranches = new OpenBranchesCommand(this);
             OpenAuthors = new OpenAuthorsCommand(this);
+            OpenBooks = new OpenBooksCommand(this);
         }
 
         public ICommand OpenBranches { get; set; }
         public ICommand OpenAuthors { get; set; }
+        public ICommand OpenBooks { get; set; }
         public Grid CenterGrid { get; set; }
     }
 }

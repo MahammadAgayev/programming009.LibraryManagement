@@ -3,10 +3,8 @@ using programming009.LibraryManagement.Core.Domain.Entities;
 using programming009.LibraryManagement.Models;
 using programming009.LibraryManagement.ViewModels.Abstract;
 
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace programming009.LibraryManagement.ViewModels
