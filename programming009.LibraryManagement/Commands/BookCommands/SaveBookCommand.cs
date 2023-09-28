@@ -3,10 +3,6 @@ using programming009.LibraryManagement.Models;
 using programming009.LibraryManagement.ViewModels;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace programming009.LibraryManagement.Commands.BookCommands
