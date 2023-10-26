@@ -1,0 +1,85 @@
+﻿<style>
+    .local-body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 50px;
+    }
+
+    .local-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .local-th, .local-td {
+        padding: 10px 15px;
+        text-align: left;
+    }
+
+    .local-th {
+        background-color: #2E86C1;
+        color: white;
+        border-bottom: 4px solid #21618C;
+    }
+
+    .local-tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .local-button {
+        padding: 5px 10px;
+        margin-right: 5px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+        .local-button:hover {
+            opacity: 0.8;
+        }
+
+    .add-btn {
+        background-color: #28A745;
+        color: white;
+    }
+
+    .update-btn {
+        background-color: #FFC107;
+        color: black;
+    }
+</style>
+
+<div class="local-body">
+    <table class="local-table">
+        <thead>
+            <tr class="local-tr">
+                <th class="local-th">Id</th>
+                <th class="local-th">Name</th>
+                <th class="local-th">Price</th>
+                <th class="local-th">Genre</th>
+                <th class="local-th">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                int row = 1; 
+            }
+            @foreach (BookModel m in Model)
+            {
+                <tr class="local-tr">
+                    <td class="local-td">@(row++)</td>
+                    <td class="local-td">@m.Name</td>
+                    <td class="local-td">$@m.Price</td>
+                    <td class="local-td">@m.Genre</td>
+                    <td>
+                        <button class="update-btn local-button">Update</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="add-btn local-button" asp-action="Add">Add</a>
+</div>
