@@ -27,13 +27,24 @@ namespace programming009.LibraryManagement.Commands.BookCommands
         {
             Book book = new Book
             {
+                Id = _viewModel.BookModel.Id,
                 Name = _viewModel.BookModel.Name,
                 Price = _viewModel.BookModel.Price,
                 Genre = _viewModel.BookModel.Genre,
             };
 
-            ApplicationContext.DB.BookRepository.Add(book);
-            _viewModel.BookModel.Id = book.Id;
+
+            if(book.Id > 0)
+            {
+                this.UpdateBook(book);
+            }
+            else
+            {
+                ApplicationContext.DB.BookRepository.Add(book);
+
+                _viewModel.BookModel.Id = book.Id;
+                _viewModel.Parent.BookModels.Add(_viewModel.BookModel);
+            }
 
             foreach(AuthorModel model in _viewModel.SelectedAuthors)
             {
@@ -45,9 +56,14 @@ namespace programming009.LibraryManagement.Commands.BookCommands
 
                 ApplicationContext.DB.AuthorBookRepository.Add(ab);
             }
-
-            _viewModel.Parent.BookModels.Add(_viewModel.BookModel);
+            
             _viewModel.Window.Close();
+        }
+
+        private void UpdateBook(Book book)
+        {
+            ApplicationContext.DB.BookRepository.Update(book);
+            ApplicationContext.DB.AuthorBookRepository.DeleteByBook(book.Id);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             book.Id = (int)cmd.ExecuteScalar();
         }
 
-        public void Delete(Book book)
+        public void Delete(int id)
         {
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
@@ -38,7 +38,7 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             const string query = "delete from books where id = @id";
             SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Parameters.AddWithValue("id", book.Id);
+            cmd.Parameters.AddWithValue("id", id);
 
             cmd.ExecuteNonQuery();
         }
@@ -48,8 +48,13 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "update book set name = @name, price  = @price, genre = @genre";
+            const string query = "update books set name = @name, price  = @price, genre = @genre where id = @id";
             SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("id", book.Id);
+            cmd.Parameters.AddWithValue("name", book.Name);
+            cmd.Parameters.AddWithValue("price", book.Price);
+            cmd.Parameters.AddWithValue("genre", book.Genre);
 
             cmd.ExecuteNonQuery();
         }

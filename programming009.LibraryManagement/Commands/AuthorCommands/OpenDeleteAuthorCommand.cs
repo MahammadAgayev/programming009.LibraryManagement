@@ -36,7 +36,7 @@ namespace programming009.LibraryManagement.Commands.AuthorCommands
                 return;
             }
 
-            ApplicationContext.DB.BranchRepository.Delete(model.Id);
+            ApplicationContext.DB.AuthorRepository.Delete(model.Id);
             _viewModel.AuthorModels.Remove(model);
         }
     }

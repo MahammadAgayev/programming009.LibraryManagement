@@ -50,7 +50,7 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer
                 {
                     Id = (int)reader["AuthorId"],
                     Name = (string)reader["AuthorName"],
-                    Surname = (string)reader["AurhotSurname"]
+                    Surname = (string)reader["AuthorSurname"]
                 },
                 BookId = (int)reader["BookId"],
                 Book = new Book

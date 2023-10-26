@@ -6,6 +6,7 @@ namespace programming009.LibraryManagement.Core.Domain.Repositories
     {
         void Add(AuthorBook authorBook);
         void Delete(int id);
+        void DeleteByBook(int id);
 
         AuthorBook Get(int id);
         List<AuthorBook> GetByBookId(int id);

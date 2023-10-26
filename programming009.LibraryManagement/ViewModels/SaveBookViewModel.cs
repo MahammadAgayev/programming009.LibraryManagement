@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace programming009.LibraryManagement.ViewModels
 {
-    public class SaveBookViewModel : BaseWindowViewModel, IDataLoader
+    public class SaveBookViewModel : BaseWindowViewModel
     {
         public SaveBookViewModel(Window window, BooksViewModel parent) : base(window)
         {
@@ -37,11 +37,9 @@ namespace programming009.LibraryManagement.ViewModels
         public int SelectedAuthorToDelete { get; set; }
         public List<Genre> Genres { get; set; }
 
-        public void Load()
+        public void Load(List<Author> authors)
         {
-            List<Author> authors = ApplicationContext.DB.AuthorRepository.Get();
-
-            foreach(Author author in authors)
+            foreach (Author author in authors)
             {
                 AuthorModel model = new AuthorModel
                 {

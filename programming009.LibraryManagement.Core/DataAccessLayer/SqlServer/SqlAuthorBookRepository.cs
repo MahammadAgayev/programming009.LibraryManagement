@@ -42,6 +42,19 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             cmd.ExecuteNonQuery();
         }
 
+        public void DeleteByBook(int id)
+        {
+            using SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            const string query = "delete from AuthorBooks where bookid =  @id";
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("id", id);
+
+            cmd.ExecuteNonQuery();
+        }
+
         public AuthorBook Get(int id)
         {
             using SqlConnection connection = new SqlConnection(_connectionString);

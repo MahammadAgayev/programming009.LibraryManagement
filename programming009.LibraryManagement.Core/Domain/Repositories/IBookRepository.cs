@@ -6,7 +6,7 @@ namespace programming009.LibraryManagement.Core.Domain.Repositories
     {
         void Add(Book book);
         void Update(Book book);
-        void Delete(Book book);
+        void Delete(int id);
 
         Book Get(int id);
         List<Book> Get();
