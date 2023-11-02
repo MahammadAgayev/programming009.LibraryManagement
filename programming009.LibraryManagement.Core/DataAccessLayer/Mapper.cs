@@ -72,5 +72,22 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer
                 PasswordHash = (string)reader["passwordhash"]
             };
         }
+
+        public static UserRole MapUserRole(IDataReader reader)
+        {
+            return new UserRole
+            {
+                Id = (int)reader["Id"],
+                RoleId = (int)reader["RoleId"],
+                UserId = (int)reader["UserId"],
+                User = new User
+                {
+                    Id = (int)reader["UserId"],
+                    Email = (string)reader["email"],
+                    PasswordHash = (string)reader["Passwordhash"],
+                    Username = (string)reader["Username"]
+                }
+            };
+        }
     }
 }

@@ -1,0 +1,79 @@
+﻿@model BookModel
+
+<style>
+    .local-body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        width: 400px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .local-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .local-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .local-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #2E86C1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .local-button:hover {
+            background-color: #21618C;
+        }
+</style>
+
+<div class="local-body">
+    <div class="form-container">
+        <form asp-action="Update">
+            <input asp-for="Id" hidden />
+            <div class="form-group">
+                <label asp-for="Name" class="local-label">Book Name</label>
+                <input asp-for="Name" class="local-input" type="text">
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="local-label">Price</label>
+                <input asp-for="Price" class="local-input" type="text">
+                <span class="text-danger" asp-validation-for="Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="local-label">Genre</label>
+                <select class="local-input" asp-for="Genre" asp-items="ViewBag.Genres"></select>
+                <span class="text-danger" asp-validation-for="Genre"></span>
+            </div>
+            <button class="local-button" type="submit">Update Book</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"></partial>
+}

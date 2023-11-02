@@ -49,6 +49,11 @@
         background-color: #FFC107;
         color: black;
     }
+
+    .delete-btn {
+        background-color: #D32F2F;
+        color: black;
+    }
 </style>
 
 <div class="local-body">
@@ -75,7 +80,9 @@
                     <td class="local-td">$@m.Price</td>
                     <td class="local-td">@m.Genre</td>
                     <td>
-                        <button class="update-btn local-button">Update</button>
+                        <a asp-action="Update" asp-route-bookId="@m.Id" class="update-btn local-button">Update</a>
+                        @*<br>*@
+                        <a asp-action="Delete" asp-route-bookId="@m.Id" class="delete-btn local-button">Delete</a>
                     </td>
                 </tr>
             }

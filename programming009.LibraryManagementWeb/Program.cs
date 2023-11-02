@@ -1,13 +1,19 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 using programming009.LibraryManagement.Core.DataAccessLayer.SqlServer;
 using programming009.LibraryManagement.Core.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
 
 string connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddScoped<IUnitOfWork>(x => new SqlUnitOfWork(connectionString)); ;
+builder.Services
+    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
+
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -24,6 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
