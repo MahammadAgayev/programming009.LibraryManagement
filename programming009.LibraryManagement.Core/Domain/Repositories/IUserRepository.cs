@@ -13,5 +13,6 @@ namespace programming009.LibraryManagement.Core.Domain.Repositories
         void Add(User user);
 
         User Get(string username);
+        User GetById(int id);
     }
 }

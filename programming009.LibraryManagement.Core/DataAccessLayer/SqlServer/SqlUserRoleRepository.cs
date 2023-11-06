@@ -20,6 +20,21 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
             _connectionString = connectionString;
         }
 
+        public void Add(UserRole userRole)
+        {
+            using SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            const string query = "insert into userroles(userid, roleid) values(@userid, @roleid)";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("userid", userRole.UserId);
+            cmd.Parameters.AddWithValue("roleid", userRole.RoleId);
+
+            cmd.ExecuteNonQuery();
+        }
+
         public List<UserRole> GetByRoleId(int roleId)
         {
             using SqlConnection connection = new SqlConnection(_connectionString);

@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 using programming009.LibraryManagement.Core.DataAccessLayer.SqlServer;
+using programming009.LibraryManagement.Core.Domain.Entities;
 using programming009.LibraryManagement.Core.Domain.Repositories;
+using programming009.LibraryManagementWeb.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,20 @@ builder.Services
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie();
 
+builder.Services.AddIdentity<User, Role>();
+builder.Services.AddTransient<IUserStore<User>, UserStore>();
+builder.Services.AddTransient<IRoleStore<Role>, RoleStore>();
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.Configure<IdentityOptions>(x =>
+{
+    x.Password.RequiredLength = 6;
+    x.Password.RequireNonAlphanumeric = false;
+    x.Password.RequireUppercase = false;
+    x.Password.RequireDigit = false;
+    x.Password.RequireLowercase = false;
+});
 
 var app = builder.Build();
 

@@ -1,4 +1,4 @@
-﻿@model LoginModel
+﻿@model RegisterModel
 
 
 <style>
@@ -31,7 +31,7 @@
         margin-bottom: 5px;
     }
 
-    .login-input[type="text"], input[type="password"] {
+    .login-input[type="text"], input[type="password"], input[type="email"] {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -57,21 +57,26 @@
 
 <div class="login-container">
     <h1>Login</h1>
-    <form asp-action="Login" asp-route-returnUrl="@ViewBag.ReturnUrl">
+    <form asp-action="Register" asp-route-returnUrl="@ViewBag.ReturnUrl">
         <div class="input-container">
-            <label class="login-label" asp-for="Username" >Username:</label>
+            <label class="login-label" asp-for="Username">Username:</label>
             <input type="text" asp-for="Username" class="login-input">
             <span asp-validation-for="Username"></span>
         </div>
+
         <div class="input-container">
             <label class="login-label" asp-for="Password">Password:</label>
-            <input class="login-input" asp-for="Password">
+            <input class="login-input" type="password" asp-for="Password">
             <span asp-validation-for="Password"></span>
         </div>
 
-        <a asp-action="Register" asp-route-returnUrl="@ViewBag.ReturnUrl" >Register</a>
+        <div class="input-container">
+            <label class="login-label" asp-for="Email">Email:</label>
+            <input class="login-input" asp-for="Email">
+            <span asp-validation-for="Email"></span>
+        </div>
 
         <span asp-validation-for="ErrorMessage"></span>
-        <button class="login-button" type="submit">Login</button>
+        <button class="login-button" type="submit">Register</button>
     </form>
 </div>

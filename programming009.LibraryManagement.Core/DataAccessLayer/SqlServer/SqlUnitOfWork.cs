@@ -22,7 +22,7 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer.SqlServer
         public IBranchRepository BranchRepository => new SqlBranchRepository(_connectionString);
 
         public IUserRepository UserRepository => new SqlUserRepository(_connectionString);
-        public IRoleRepository RoleRepository => new SqlRoleRepo(_connectionString);
+        public IRoleRepository RoleRepository => new SqlRoleRepository(_connectionString);
         public IUserRoleRepository UserRoleRepository => new SqlUserRoleRepository(_connectionString);
 
         public bool IsOnline()

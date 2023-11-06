@@ -20,6 +20,10 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer
 
         public IUserRepository UserRepository => throw new NotImplementedException();
 
+        public IRoleRepository RoleRepository => throw new NotImplementedException();
+
+        public IUserRoleRepository UserRoleRepository => throw new NotImplementedException();
+
         public bool IsOnline()
         {
             return false;

@@ -5,12 +5,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using programming009.LibraryManagement.Core.Domain.Entities;
 using programming009.LibraryManagement.Core.Domain.Enums;
 using programming009.LibraryManagement.Core.Domain.Repositories;
+using programming009.LibraryManagementWeb.Constants;
 using programming009.LibraryManagementWeb.Mappers;
 using programming009.LibraryManagementWeb.Models;
 
 namespace programming009.LibraryManagementWeb.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class BooksController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

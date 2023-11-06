@@ -67,6 +67,7 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer
         {
             return new User
             {
+                Id = (int)reader["Id"],
                 Username = (string)reader["username"],
                 Email = (string)reader["email"],
                 PasswordHash = (string)reader["passwordhash"]
@@ -86,7 +87,21 @@ namespace programming009.LibraryManagement.Core.DataAccessLayer
                     Email = (string)reader["email"],
                     PasswordHash = (string)reader["Passwordhash"],
                     Username = (string)reader["Username"]
+                },
+                Role = new Role
+                {
+                    Id = (int)reader["RoleId"],
+                    Name = (string)reader["RoleName"],
                 }
+            };
+        }
+
+        public static Role MapToRole(IDataReader reader)
+        {
+            return new Role
+            {
+                Id = (int)reader["Id"],
+                Name = (string)reader["Name"],
             };
         }
     }
