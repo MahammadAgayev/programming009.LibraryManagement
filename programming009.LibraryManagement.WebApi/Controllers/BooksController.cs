@@ -11,7 +11,6 @@ namespace programming009.LibraryManagement.WebApi.Controllers
     public class BooksController : ControllerBase
     {
         private readonly IBookService _bookService;
-
         public BooksController(IBookService bookService)
         {
             _bookService = bookService;
@@ -29,6 +28,7 @@ namespace programming009.LibraryManagement.WebApi.Controllers
         public IActionResult Put(BookModel model, int id)
         {
             model.Id = id;
+
             _bookService.Update(model);
 
             return Ok();
@@ -49,6 +49,5 @@ namespace programming009.LibraryManagement.WebApi.Controllers
 
             return Ok(books);
         }
-
     }
 }

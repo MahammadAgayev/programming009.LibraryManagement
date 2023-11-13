@@ -3,7 +3,7 @@
     "programming009.LibraryManagement.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/books",
+      "launchUrl": "index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

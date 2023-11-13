@@ -10,7 +10,6 @@ namespace programming009.LibraryManagement.WebApi.Middlewares
     public class ErrorHandlerMiddleware
     {
         private readonly RequestDelegate _request;
-
         public ErrorHandlerMiddleware(RequestDelegate request)
         {
             _request = request; 
@@ -35,7 +34,7 @@ namespace programming009.LibraryManagement.WebApi.Middlewares
             catch (Exception e)
             {
                 //return 500 internal server error
-                await this.HandleErrorAsync(context, HttpStatusCode.InternalServerError, e.Message);
+                await this.HandleErrorAsync(context, HttpStatusCode.InternalServerError, "Something went wrong... Please try again");
             }
         }
 

@@ -8,9 +8,10 @@ namespace programming009.LibraryManagement.WebApi.Services
     public class BookService : IBookService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public BookService(IUnitOfWork unitOfWork)
+        private readonly ILogger<BookService> _logger;
+        public BookService(IUnitOfWork unitOfWork, ILogger<BookService> logger)
         {
+            _logger = logger;
             _unitOfWork = unitOfWork;
         }
 
@@ -34,6 +35,8 @@ namespace programming009.LibraryManagement.WebApi.Services
                 models.Add(model);
             }
 
+            _logger.LogInformation($"there are {books.Count} books");
+
             return models;
         }
 
@@ -41,10 +44,8 @@ namespace programming009.LibraryManagement.WebApi.Services
         {
             Book b = _unitOfWork.BookRepository.Get(id);
 
-            if(b == null)
-            {
-                throw new NotFoundException("Book not found");
-            }
+            if (b == null)
+                throw new NotFoundException($"Book not found with id {id}");
 
             BookModel m = BookMapper.ToBookModel(b);
 
@@ -56,9 +57,7 @@ namespace programming009.LibraryManagement.WebApi.Services
             Book original = _unitOfWork.BookRepository.Get(model.Id);
 
             if(original == null)
-            {
                 throw new NotFoundException($"Book not found with id {model.Id}");
-            }
 
             Book b = BookMapper.ToBook(model);
 
