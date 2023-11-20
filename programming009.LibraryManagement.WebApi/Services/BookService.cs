@@ -1,4 +1,7 @@
-﻿using programming009.LibraryManagement.Core.Domain.Entities;
+﻿using FluentValidation;
+using FluentValidation.Results;
+
+using programming009.LibraryManagement.Core.Domain.Entities;
 using programming009.LibraryManagement.Core.Domain.Repositories;
 using programming009.LibraryManagement.WebApi.Models;
 using programming009.LibraryManagement.WebApi.Services.Abstract;
@@ -9,10 +12,13 @@ namespace programming009.LibraryManagement.WebApi.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<BookService> _logger;
-        public BookService(IUnitOfWork unitOfWork, ILogger<BookService> logger)
+        private readonly IValidator<BookModel> _validator;
+
+        public BookService(IUnitOfWork unitOfWork, ILogger<BookService> logger, IValidator<BookModel> validator)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
+            _validator = validator;
         }
 
         public void Add(BookModel model)
@@ -54,6 +60,10 @@ namespace programming009.LibraryManagement.WebApi.Services
 
         public void Update(BookModel model)
         {
+            ValidationResult result =  _validator.Validate(model);
+
+            _logger.LogInformation("book model validated with result {result}", result.IsValid);
+
             Book original = _unitOfWork.BookRepository.Get(model.Id);
 
             if(original == null)

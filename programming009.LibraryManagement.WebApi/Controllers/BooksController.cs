@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using programming009.LibraryManagement.WebApi.Models;
 using programming009.LibraryManagement.WebApi.Services.Abstract;
@@ -8,6 +10,7 @@ namespace programming009.LibraryManagement.WebApi.Controllers
     //RESTfull
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BooksController : ControllerBase
     {
         private readonly IBookService _bookService;
